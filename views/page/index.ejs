@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>buy bot</title>
+</head>
+
+<body>
+    <form>
+        <select aria-placeholder="Select your Shoe">
+            <% for(var i=0; i<shoes.length; i++){ %>
+            <option value=<%=shoes[i] %> >
+                <%= shoes[i].replace("https://www.nike.com/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
+            </option>
+            <% }%>
+        </select>
+        <input placeholder="first name"/>
+        <input placeholder="last name" />
+        <input placeholder="address" />
+        <input placeholder="city"/>
+        <input placeholder="state"/>
+        <input placeholder="zip" />
+        <input placeholder="email"/>
+        <input placeholder="phone"/>
+        <input placeholder="credit card"/>
+        <input placeholder="exp date"/>
+        <input placeholder="security code"/>
+        <button>submit</button>
+    </form>
+
+</body>
+
+</html>
