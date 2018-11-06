@@ -1,5 +1,11 @@
 const puppeteer = require("puppeteer");
+const schedule = require("node-schedule");
+const moment = require("moment");
 
+const NOTIFY_ME =
+  "#root > div > div > div.main-layout > div > div:nth-child(3) > div.pdp-container.ncss-col-sm-12.full > div > section.card-product-component.ncss-row.bg-white.mt0-sm.mb2-sm.mt7-lg.mb7-md.show-product > div.ncss-col-sm-12.ncss-col-lg-4.va-sm-t.pt0-sm.pr7-sm.pb0-sm.pl7-sm.pt12-md.pb12-md.pt0-lg.pb0-lg.pl5-lg.mt5-sm.mb3-sm.mt0-lg.mb0-lg.fixie > aside > div > div.ncss-col-sm-12.mt9-sm > div > button";
+const AVAILABILITY_DATE =
+  "#root > div > div > div.main-layout > div > div:nth-child(3) > div.pdp-container.ncss-col-sm-12.full > div > section.card-product-component.ncss-row.bg-white.mt0-sm.mb2-sm.mt7-lg.mb7-md.show-product > div.ncss-col-sm-12.ncss-col-lg-4.va-sm-t.pt0-sm.pr7-sm.pb0-sm.pl7-sm.pt12-md.pb12-md.pt0-lg.pb0-lg.pl5-lg.mt5-sm.mb3-sm.mt0-lg.mb0-lg.fixie > aside > div > div.product-info.ncss-col-sm-12.full > div.test-available-date > div";
 const SIZE_BTN =
   "#root > div > div > div.main-layout > div > div:nth-child(3) > div.pdp-container.ncss-col-sm-12.full > div > section.card-product-component.ncss-row.bg-white.mt0-sm.mb2-sm.mt7-lg.mb7-md.show-product > div.ncss-col-sm-12.ncss-col-lg-4.va-sm-t.pt0-sm.pr7-sm.pb0-sm.pl7-sm.pt12-md.pb12-md.pt0-lg.pb0-lg.pl5-lg.mt5-sm.mb3-sm.mt0-lg.mb0-lg.fixie > aside > div > div:nth-child(2) > div > div.buying-tools-container > div.size-dropdown-component.d-sm-b.mb5-sm.mb3-lg > div > button > div";
 const SELECT_SIZE =
@@ -28,6 +34,65 @@ const CONTINUE_TO_ORDER_REVIEW =
   "#payment > div > div > div:nth-child(2) > div.ncss-col-sm-12.pb5-sm.prl5-sm.va-sm-t.ta-sm-r > button";
 const PLACE_ORDER = "#place-order > div > button";
 
+const gogogo = async page => {
+//   await page.waitForSelector(SIZE_BTN);
+//   await page.click(SIZE_BTN);
+//   await page.waitForSelector(SELECT_SIZE);
+//   await page.click(SELECT_SIZE);
+//   await page.waitForSelector(ADD_TO_CART);
+//   await page.click(ADD_TO_CART, { delay: 100 });
+//   await page.waitForSelector(CHECKOUT);
+//   await page.click(CHECKOUT);
+//   await page.waitForSelector(GUEST_CHECKOUT);
+//   await page.goto("https://www.nike.com/us/en/checkout");
+  console.log("job done");
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(FIRST_NAME_INPUT);
+  //   await page.keyboard.type(fname, { delay: 10 });
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(LAST_NAME_INPUT);
+  //   await page.keyboard.type(lname);
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(ADDRESS_INPUT);
+  //   await page.keyboard.type(my_address);
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(CITY);
+  //   await page.keyboard.type("New York");
+  //   await page.waitForSelector(STATE);
+  //   await page.select(STATE, "NY");
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(ZIP);
+  //   await page.keyboard.type(my_zip);
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(EMAIL);
+  //   await page.keyboard.type(my_email);
+  //   await page.waitForSelector(FIRST_NAME_INPUT);
+  //   await page.click(PHONE);
+  //   await page.keyboard.type(my_phone);
+  //   await page.waitForSelector(SAVE_N_CONTINUE);
+  //   await page.click(SAVE_N_CONTINUE);
+  //   await page.waitForSelector(CONTINUE_TO_PAYMENT);
+  //   await page.click(CONTINUE_TO_PAYMENT);
+  //   await page.waitFor(100);
+  //   Promise.all(page.frames())
+  //     .then(val =>
+  //       val.forEach(async frame => {
+  //         await frame.waitForSelector(CREDIT_CARD, { timeout: 2000 });
+  //         await frame.click(CREDIT_CARD);
+  //         await page.keyboard.type(my_cc);
+  //         await frame.click(EXP_DATE);
+  //         await page.keyboard.type(my_exp_date, { delay: 40 });
+  //         await frame.click(SEC_CODE);
+  //         await page.keyboard.type(my_sec_code);
+  //       })
+  //     )
+  //     .catch(err => console.log("no iframe found"));
+  //   await page.waitForSelector(CONTINUE_TO_ORDER_REVIEW);
+  //   await page.click(CONTINUE_TO_ORDER_REVIEW);
+  //   await page.waitForSelector(PLACE_ORDER);
+  //   await page.click(PLACE_ORDER);
+};
+
 module.exports.nikeFlow = async (
   goto,
   size,
@@ -41,68 +106,103 @@ module.exports.nikeFlow = async (
   my_phone,
   my_cc,
   my_exp_date,
-  my_sec_code
+  my_sec_code,
+  month,
+  date,
+  year,
+  hour,
+  minute
 ) => {
   try {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
+    // console.log("goto ", goto.toString());
     await page.goto(goto);
-    await page.waitForSelector(SIZE_BTN);
-    await page.click(SIZE_BTN);
-    await page.waitForSelector(SELECT_SIZE);
-    await page.click(SELECT_SIZE);
-    await page.waitForSelector(ADD_TO_CART);
-    await page.click(ADD_TO_CART, { delay: 100 });
-    await page.waitForSelector(CHECKOUT);
-    await page.click(CHECKOUT);
-    await page.waitForSelector(GUEST_CHECKOUT);
-    await page.goto("https://www.nike.com/us/en/checkout");
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(FIRST_NAME_INPUT);
-    await page.keyboard.type(fname, { delay: 10 });
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(LAST_NAME_INPUT);
-    await page.keyboard.type(lname);
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(ADDRESS_INPUT);
-    await page.keyboard.type(my_address);
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(CITY);
-    await page.keyboard.type("New York");
-    await page.waitForSelector(STATE);
-    await page.select(STATE, "NY");
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(ZIP);
-    await page.keyboard.type(my_zip);
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(EMAIL);
-    await page.keyboard.type(my_email);
-    await page.waitForSelector(FIRST_NAME_INPUT);
-    await page.click(PHONE);
-    await page.keyboard.type(my_phone);
-    await page.waitForSelector(SAVE_N_CONTINUE);
-    await page.click(SAVE_N_CONTINUE);
-    await page.waitForSelector(CONTINUE_TO_PAYMENT);
-    await page.click(CONTINUE_TO_PAYMENT);
-    await page.waitFor(100);
+    if ((await page.$(NOTIFY_ME)) !== null) {
+        console.log("herer")
+        gogogo(page)
+      // turn back to !==
+    //   let rule = new schedule.RecurrenceRule();
+      //   console.log("month", month, typeof month)
 
-    Promise.all(page.frames())
-      .then(val =>
-        val.forEach(async frame => {
-          await frame.waitForSelector(CREDIT_CARD, { timeout: 2000 });
-          await frame.click(CREDIT_CARD);
-          await page.keyboard.type(my_cc);
-          await frame.click(EXP_DATE);
-          await page.keyboard.type(my_exp_date, { delay: 40 });
-          await frame.click(SEC_CODE);
-          await page.keyboard.type(my_sec_code);
-        })
-      )
-      .catch(err => console.log("no iframe found"));
-    // await page.waitForSelector(CONTINUE_TO_ORDER_REVIEW);
-    // await page.click(CONTINUE_TO_ORDER_REVIEW);
-    // await page.waitForSelector(PLACE_ORDER);
-    // await page.click(PLACE_ORDER);
+      //   rule.month = month;
+      //   rule.date = date;
+      //   rule.year = year;
+      //   rule.hour = hour;
+      //   rule.minute = minute;
+
+    //   let startTime = new Date(
+    //     moment(
+    //       `${year}-${month}-${date} ${hour}:${minute} +0000`,
+    //       "YYYY-MM-DD HH:mm Z"
+    //     )
+    //   );
+    //   let endTime = new Date(startTime.getTime() + 5000);
+
+    //   schedule.scheduleJob(
+    //     { start: startTime, end: endTime, rule: "*/1 * * * * *" },
+    //     function() {
+    //       console.log("job start");
+    //       gogogo(page);
+    //     }
+    //   );
+    } else {
+      // await page.waitForSelector(SIZE_BTN);
+      // await page.click(SIZE_BTN);
+      // await page.waitForSelector(SELECT_SIZE);
+      // await page.click(SELECT_SIZE);
+      // await page.waitForSelector(ADD_TO_CART);
+      // await page.click(ADD_TO_CART, { delay: 100 });
+      // await page.waitForSelector(CHECKOUT);
+      // await page.click(CHECKOUT);
+      // await page.waitForSelector(GUEST_CHECKOUT);
+      // await page.goto("https://www.nike.com/us/en/checkout");
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(FIRST_NAME_INPUT);
+      // await page.keyboard.type(fname, { delay: 10 });
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(LAST_NAME_INPUT);
+      // await page.keyboard.type(lname);
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(ADDRESS_INPUT);
+      // await page.keyboard.type(my_address);
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(CITY);
+      // await page.keyboard.type("New York");
+      // await page.waitForSelector(STATE);
+      // await page.select(STATE, "NY");
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(ZIP);
+      // await page.keyboard.type(my_zip);
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(EMAIL);
+      // await page.keyboard.type(my_email);
+      // await page.waitForSelector(FIRST_NAME_INPUT);
+      // await page.click(PHONE);
+      // await page.keyboard.type(my_phone);
+      // await page.waitForSelector(SAVE_N_CONTINUE);
+      // await page.click(SAVE_N_CONTINUE);
+      // await page.waitForSelector(CONTINUE_TO_PAYMENT);
+      // await page.click(CONTINUE_TO_PAYMENT);
+      // await page.waitFor(100);
+      // Promise.all(page.frames())
+      //   .then(val =>
+      //     val.forEach(async frame => {
+      //       await frame.waitForSelector(CREDIT_CARD, { timeout: 2000 });
+      //       await frame.click(CREDIT_CARD);
+      //       await page.keyboard.type(my_cc);
+      //       await frame.click(EXP_DATE);
+      //       await page.keyboard.type(my_exp_date, { delay: 40 });
+      //       await frame.click(SEC_CODE);
+      //       await page.keyboard.type(my_sec_code);
+      //     })
+      //   )
+      //   .catch(err => console.log("no iframe found"));
+      // await page.waitForSelector(CONTINUE_TO_ORDER_REVIEW);
+      // await page.click(CONTINUE_TO_ORDER_REVIEW);
+      // await page.waitForSelector(PLACE_ORDER);
+      // await page.click(PLACE_ORDER);
+    }
   } catch (err) {
     console.log(err);
   }

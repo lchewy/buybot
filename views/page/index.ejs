@@ -9,26 +9,32 @@
 </head>
 
 <body>
-    <form>
-        <select aria-placeholder="Select your Shoe">
+    <form method="POST" action="/post">
+        <select aria-placeholder="Select your Shoe" name="shoe">
             <% for(var i=0; i<shoes.length; i++){ %>
             <option value=<%=shoes[i] %> >
-                <%= shoes[i].replace("https://www.nike.com/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
+                <%= shoes[i].replace("https://www.nike.com/cn/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
             </option>
             <% }%>
         </select>
-        <input placeholder="first name"/>
-        <input placeholder="last name" />
-        <input placeholder="address" />
-        <input placeholder="city"/>
-        <input placeholder="state"/>
-        <input placeholder="zip" />
-        <input placeholder="email"/>
-        <input placeholder="phone"/>
-        <input placeholder="credit card"/>
-        <input placeholder="exp date"/>
-        <input placeholder="security code"/>
-        <button>submit</button>
+        <input type="text" placeholder="first name" name="fname" />
+        <input type="text" placeholder="last name" name="lname" />
+        <input type="text" placeholder="address" name="my_address" />
+        <input type="text" placeholder="city" name="my_city" />
+        <input type="text" placeholder="state" name="my_state" />
+        <input type="text" placeholder="zip" name="my_zip" />
+        <input type="text" placeholder="email" name="my_email" />
+        <input type="text" placeholder="phone" name="my_phone" />
+        <input type="text" placeholder="credit card" name="my_cc" />
+        <input type="text" placeholder="exp date" name="my_exp_date" />
+        <input type="text" placeholder="security code" name="my_sec_code" />
+        <input type="text" placeholder="month" name="month" />
+        <input type="text" placeholder="date" name="date" />
+        <input type="text" placeholder="year" name="year" />
+        <input type="text" placeholder="hour" name="hour" />
+        <input type="text" placeholder="minute" name="minute" />
+
+        <input type="submit"/>
     </form>
 
 </body>

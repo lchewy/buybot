@@ -8,7 +8,7 @@ const FEED_CONTAINER =
   try {
     const browser = await puppeteer.launch({headless:true});
     const page = await browser.newPage();
-    await page.goto("https://www.nike.com/launch");
+    await page.goto("https://www.nike.com/us/launch/");
 
     await page.waitForSelector(FEED_CONTAINER);
 
