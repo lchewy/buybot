@@ -11,13 +11,13 @@ app.use(parser.json());
 
 app.get("/", async (req, res) => {
   const shoes = await getShoeList();
-  console.log(shoes)
+  // console.log(shoes)
 
   res.render("page/index", { shoes });
 });
 
 app.post("/post", async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   await nikeFlow(
     req.body.shoe,
     null,

@@ -13,7 +13,7 @@
         <select aria-placeholder="Select your Shoe" name="shoe">
             <% for(var i=0; i<shoes.length; i++){ %>
             <option value=<%=shoes[i] %> >
-                <%= shoes[i].replace("https://www.nike.com/cn/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
+                <%= shoes[i].replace("https://www.nike.com/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
             </option>
             <% }%>
         </select>
