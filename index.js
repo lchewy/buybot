@@ -20,7 +20,7 @@ app.post("/post", async (req, res) => {
   // console.log(req.body)
   await nikeFlow(
     req.body.shoe,
-    null,
+    req.body.size,
     req.body.fname,
     req.body.lname,
     req.body.my_address,
@@ -39,7 +39,8 @@ app.post("/post", async (req, res) => {
     Number(req.body.minute)
   );
   const shoes = await getShoeList();
-  res.render("page/index", { shoes });
+  res.redirect("/")
+  // res.render("page/index", { shoes });
 });
 
 const PORT = 8080 || process.env.PORT;

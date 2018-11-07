@@ -10,29 +10,68 @@
 
 <body>
     <form method="POST" action="/post">
-        <select aria-placeholder="Select your Shoe" name="shoe">
-            <% for(var i=0; i<shoes.length; i++){ %>
-            <option value=<%=shoes[i] %> >
-                <%= shoes[i].replace("https://www.nike.com/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
-            </option>
-            <% }%>
-        </select>
-        <input type="text" placeholder="first name" name="fname" />
-        <input type="text" placeholder="last name" name="lname" />
-        <input type="text" placeholder="address" name="my_address" />
-        <input type="text" placeholder="city" name="my_city" />
-        <input type="text" placeholder="state" name="my_state" />
-        <input type="text" placeholder="zip" name="my_zip" />
-        <input type="text" placeholder="email" name="my_email" />
-        <input type="text" placeholder="phone" name="my_phone" />
-        <input type="text" placeholder="credit card" name="my_cc" />
-        <input type="text" placeholder="exp date" name="my_exp_date" />
-        <input type="text" placeholder="security code" name="my_sec_code" />
-        <input type="text" placeholder="month" name="month" />
-        <input type="text" placeholder="date" name="date" />
-        <input type="text" placeholder="year" name="year" />
-        <input type="text" placeholder="hour" name="hour" />
-        <input type="text" placeholder="minute" name="minute" />
+        <div>
+            <div>
+                <label>
+                    Select Shoe
+                </label>
+            </div>
+            <div>
+                <select aria-placeholder="Select your Shoe" name="shoe">
+                    <% for(var i=0; i<shoes.length; i++){ %>
+                    <option value=<%=shoes[i] %> >
+                        <%= shoes[i].replace("https://www.nike.com/launch/t/", "").replace(/-/g, " ").replace(/\//g, "").toUpperCase() %>
+                    </option>
+                    <% }%>
+                </select>
+            </div>
+        </div>
+        <div>
+            <input type="text" placeholder="first name" name="fname" required />
+            <input type="text" placeholder="last name" name="lname" required/>
+        </div>
+        <div>
+            <input type="text" placeholder="address" name="my_address" required/>
+            <input type="text" placeholder="city" name="my_city" required/>
+            <input type="text" placeholder="state" name="my_state" required/>
+            <input type="text" placeholder="zip" name="my_zip" required/>
+        </div>
+        <div>
+            <div>
+                <div><label>shoe size</label></div>
+                <select name="size">
+                    <option value="1" >7</option>
+                    <option value="2" >7.5</option>
+                    <option value="3" >8</option>
+                    <option value="4" >8.5</option>
+                    <option value="5" >9</option>
+                    <option value="6" >9.5</option>
+                    <option value="7" >10</option>
+                    <option value="8" >10.5</option>
+                    <option value="9" >11</option>
+                    <option value="10" >11.5</option>
+                    <option value="11" >12</option>
+                    <option value="12" >12.5</option>
+                    <option value="13" >13</option>
+                    <option value="14" >14</option>
+                    <option value="15" >15</option>
+                </select>
+            </div>
+            <input type="text" placeholder="email" name="my_email" required />
+            <input type="text" placeholder="phone" name="my_phone" required />
+        </div>
+        <div>
+            <input type="text" placeholder="credit card" name="my_cc" required/>
+            <input type="text" placeholder="exp date" name="my_exp_date" required/>
+            <input type="text" placeholder="security code" name="my_sec_code" required/>
+        </div>
+        <div>
+            <input type="text" placeholder="month" name="month" />
+            <input type="text" placeholder="date" name="date" />
+            <input type="text" placeholder="year" name="year" />
+            <input type="text" placeholder="hour" name="hour" />
+            <input type="text" placeholder="minute" name="minute" />
+        </div>
 
         <input type="submit"/>
     </form>
