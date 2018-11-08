@@ -17,7 +17,6 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/post", async (req, res) => {
-  // console.log(req.body)
   await nikeFlow(
     req.body.shoe,
     req.body.size,
@@ -25,7 +24,7 @@ app.post("/post", async (req, res) => {
     req.body.lname,
     req.body.my_address,
     req.body.my_city,
-    req.body.my_state,
+    req.body.state,
     req.body.my_zip,
     req.body.my_email,
     req.body.my_phone,
