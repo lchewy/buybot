@@ -34,6 +34,9 @@ const CONTINUE_TO_ORDER_REVIEW =
 const PLACE_ORDER =
   "#placeorderAB3576 > div > div.ncss-col-sm-12.pt5-sm.pb5-sm.va-sm-t.ta-sm-r.test-desktop-button > button";
 
+  // THERE is a buy selector immediately after drop NOT an add to cart selector
+  const BUY_SELECTOR = "#root > div > div > div.main-layout > div > div:nth-child(3) > div.pdp-container.ncss-col-sm-12.full > div > section.card-product-component.ncss-row.bg-white.mt0-sm.mb2-sm.mt7-lg.mb7-md.show-product > div.ncss-col-sm-12.ncss-col-lg-4.va-sm-t.pt0-sm.pr7-sm.pb0-sm.pl7-sm.pt12-md.pb12-md.pt0-lg.pb0-lg.pl5-lg.mt5-sm.mb3-sm.mt0-lg.mb0-lg.fixie > aside > div > div.ncss-col-sm-12.mt9-sm > div > button" 
+
 const gogogo = async (
   page,
   browser,
