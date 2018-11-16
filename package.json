@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "slug": "nodemon slugs.js"
+    "slug": "nodemon flow3.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
+    "node-schedule": "^1.3.0",
     "nodemon": "^1.18.5",
     "puppeteer": "^1.9.0"
   }
