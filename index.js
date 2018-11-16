@@ -3,7 +3,7 @@ const app = express();
 const _ = require("lodash");
 const parser = require("body-parser");
 const { getShoeList } = require("./slugs");
-const { nikeFlow } = require("./flow");
+const { nikeFlow } = require("./flow3");
 
 app.set("view engine", "ejs");
 app.use(parser.urlencoded({ extended: false }));

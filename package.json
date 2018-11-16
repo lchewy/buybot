@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "slug": "nodemon flow2.js"
+    "slug": "nodemon flow3.js"
   },
   "keywords": [],
   "author": "",

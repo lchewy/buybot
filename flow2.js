@@ -75,7 +75,7 @@ module.exports.newNikeFlow = async () => {
     );
 
     await page.select(STATE, "NY");
-    await page.evaluate(() => (document.getElementById("state").value = "NY"));
+    // await page.evaluate(() => (document.getElementById("state").value = "NY"));
     await page.waitForSelector(ZIP);
     await page.click(ZIP);
     await page.evaluate(
