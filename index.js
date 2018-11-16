@@ -12,7 +12,6 @@ app.use(parser.json());
 app.get("/", async (req, res) => {
   const shoes = await getShoeList();
   // console.log(shoes)
-
   res.render("page/index", { shoes });
 });
 
